@@ -10,8 +10,7 @@ public final class CalcGame {
 
     public static void play() {
         List<String> list = Arrays.asList("+", "-", "*");
-        Random rand = new Random();
-        String randomElement = list.get(rand.nextInt(list.size()));
+
         int result = 0;
         Scanner scanner = new Scanner(System.in);
 
@@ -24,7 +23,8 @@ public final class CalcGame {
         System.out.println("What is the result of the expression?");
 
         for (int i = 0; i <= 2; i++) {
-
+            Random rand = new Random();
+            String randomElement = list.get(rand.nextInt(list.size()));
             int random1 = new Random().nextInt(101);
             int random2 = new Random().nextInt(101);
 
