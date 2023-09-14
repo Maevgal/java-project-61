@@ -27,7 +27,7 @@ public final class CalcGame {
             if (Engine.checkAnswer(answer, result)) break;
 
             if (i == 2) {
-                System.out.println("Congratulations, " + Engine.userName + "!");
+                Engine.congratulation();
             }
         }
 

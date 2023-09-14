@@ -25,7 +25,6 @@ public class App {
         } else if (choice == 2) {
             Engine.greeting();
             EvenGame.play();
-
         } else if (choice == 3) {
             Engine.greeting();
             CalcGame.play();

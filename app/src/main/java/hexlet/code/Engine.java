@@ -4,9 +4,9 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Engine {
-    public static String userName;
-    public static Random random = new Random();
-    public static Scanner scanner = new Scanner(System.in);
+    private static String userName;
+    private static Random random = new Random();
+    private static Scanner scanner = new Scanner(System.in);
 
     public static String greeting() {
 
@@ -65,5 +65,9 @@ public class Engine {
             return true;
         }
         return false;
+    }
+
+    public static void congratulation() {
+        System.out.println("Congratulations, " + userName + "!");
     }
 }
