@@ -4,8 +4,6 @@ import hexlet.code.Engine;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
 
 
 public final class CalcGame {
@@ -13,56 +11,38 @@ public final class CalcGame {
     public static void play() {
         List<String> list = Arrays.asList("+", "-", "*");
 
-        int result = 0;
-        Scanner scanner = new Scanner(System.in);
-
-
-        //Engine.greeting();
-        /*System.out.print("May I have your name? ");
-        String userName = scanner.next();
-        System.out.println("Hello, " + userName + "!");*/
 
         System.out.println("What is the result of the expression?");
 
         for (int i = 0; i <= 2; i++) {
-            Random rand = new Random();
-            String randomElement = list.get(rand.nextInt(list.size()));
-            int random1 = new Random().nextInt(101);
-            int random2 = new Random().nextInt(101);
+            int random1 = Engine.getRandomInt();
+            int random2 = Engine.getRandomInt();
+            String randomElement = list.get(Engine.getRandomInt(list.size()));
 
-            System.out.println("Question: " + random1 + " " + randomElement + " " + random2);
-            System.out.print("Your answer: ");
-            String answer = scanner.next();
+            int result = calculateResult(randomElement, random1, random2);
 
-            //вычисляем результат
-            if (randomElement.equals("+")) {
-                result = random1 + random2;
-            } else if (randomElement.equals("-")) {
-                result = random1 - random2;
-            } else if (randomElement.equals("*")) {
-                result = random1 * random2;
-            }
+            Engine.askQuestion(random1 + " " + randomElement + " " + random2);
+            int answer = Engine.getAnswerInt();
 
-            //сравниваем ответ
-
-            if (Integer.parseInt(answer) == result) {
-                System.out.println("Correct!");
-            } else {
-                System.out.println("'" + answer + "'"
-                        + " is wrong answer ;(. Correct answer was '"
-                        + result + "'");
-                System.out.println("Let's try again, " + Engine.userName);
-
-                break;
-            }
+            if (Engine.checkAnswer(answer, result)) break;
 
             if (i == 2) {
                 System.out.println("Congratulations, " + Engine.userName + "!");
             }
-
-
         }
-        scanner.close();
+
+    }
+
+    private static int calculateResult(String randomElement, int random1, int random2) {
+        int result = 0;
+        if (randomElement.equals("+")) {
+            result = random1 + random2;
+        } else if (randomElement.equals("-")) {
+            result = random1 - random2;
+        } else if (randomElement.equals("*")) {
+            result = random1 * random2;
+        }
+        return result;
     }
 
 
