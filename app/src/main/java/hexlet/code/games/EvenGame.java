@@ -16,7 +16,9 @@ public class EvenGame {
 
             String result = random % 2 == 0 ? "yes" : "no";
 
-            if (Engine.checkAnswer(answer, result)) break;
+            if (Engine.checkAnswer(answer, result)) {
+                break;
+            }
 
             if (i == 2) {
                 Engine.congratulation();

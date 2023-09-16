@@ -15,7 +15,9 @@ public class PrimeGame {
 
             String result = calculateGsd(random) ? "yes" : "no";
 
-            if (Engine.checkAnswer(answer, result)) break;
+            if (Engine.checkAnswer(answer, result)) {
+                break;
+            }
 
             if (i == 2) {
                 Engine.congratulation();

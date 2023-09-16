@@ -2,16 +2,18 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import java.util.Arrays;
 
 public class Progression {
+
+    public static final int LENGTH = 10;
+
     public static void play() {
 
         System.out.println("What number is missing in the progression?");
         for (int i = 0; i <= 2; i++) {
             int start = Engine.getRandomInt();
             int dif = Engine.getRandomInt();
-            int length = 10;
+            int length = LENGTH;
             int randomIndex = Engine.getRandomInt(length - 1);
             String[] prog = createProgession(start, dif, length);
             int result = Integer.parseInt(prog[randomIndex]);
@@ -21,7 +23,9 @@ public class Progression {
 
             int answer = Engine.getAnswerInt();
 
-            if (Engine.checkAnswer(answer, result)) break;
+            if (Engine.checkAnswer(answer, result)) {
+                break;
+            }
 
             if (i == 2) {
                 Engine.congratulation();

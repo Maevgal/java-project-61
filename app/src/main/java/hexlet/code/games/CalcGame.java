@@ -24,11 +24,14 @@ public final class CalcGame {
             Engine.askQuestion(random1 + " " + randomElement + " " + random2);
             int answer = Engine.getAnswerInt();
 
-            if (Engine.checkAnswer(answer, result)) break;
+            if (Engine.checkAnswer(answer, result)) {
+                break;
+            }
 
             if (i == 2) {
                 Engine.congratulation();
             }
+
         }
 
     }

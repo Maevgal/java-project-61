@@ -16,7 +16,9 @@ public class GcdGame {
             Engine.askQuestion(random1 + " " + random2);
             int answer = Engine.getAnswerInt();
 
-            if (Engine.checkAnswer(answer, result)) break;
+            if (Engine.checkAnswer(answer, result)) {
+                break;
+            }
 
             if (i == 2) {
                 Engine.congratulation();
