@@ -32,7 +32,7 @@ public class GcdGame {
         int min = a <= b ? a : b;
 
         while (true) {
-            if (min==0){
+            if (min == 0) {
                 return max;
             }
             c = max % min;
