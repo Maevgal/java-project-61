@@ -7,14 +7,17 @@ import java.util.List;
 import java.util.Random;
 
 public class GcdGame {
+
+    public static final int BOUND = 101;
+
     public static void play() {
         String descriptionGame = "Find the greatest common divisor of given numbers.";
         List<String> questions = new ArrayList<>();
         List<String> answers = new ArrayList<>();
         for (int i = 0; i <= 2; i++) {
             Random random = new Random();
-            int random1 = random.nextInt(101);
-            int random2 = random.nextInt(101);
+            int random1 = random.nextInt(BOUND);
+            int random2 = random.nextInt(BOUND);
             int result = calculateGsd(random1, random2);
             answers.add(String.valueOf(result));
             questions.add(random1 + " " + random2);

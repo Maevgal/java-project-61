@@ -5,7 +5,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Engine {
-    public static final int BOUND = 101;
     private static String userName;
     private static Random random = new Random();
     private static Scanner scanner = new Scanner(System.in);

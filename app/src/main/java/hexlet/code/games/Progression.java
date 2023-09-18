@@ -8,6 +8,7 @@ import java.util.Random;
 
 public class Progression {
     public static final int LENGTH = 10;
+    public static final int BOUND = 101;
 
     public static void play() {
         String descriptionGame = "What number is missing in the progression?";
@@ -15,8 +16,8 @@ public class Progression {
         List<String> answers = new ArrayList<>();
         for (int i = 0; i <= 2; i++) {
             Random random = new Random();
-            int start = random.nextInt(101);
-            int dif = random.nextInt(101);
+            int start = random.nextInt(BOUND);
+            int dif = random.nextInt(BOUND);
             int length = LENGTH;
             int randomIndex = random.nextInt(length - 1);
             String[] prog = createProgession(start, dif, length);

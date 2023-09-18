@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Random;
 
 public final class CalcGame {
+
+    public static final int BOUND = 101;
+
     public static void play() {
         List<String> list = List.of("+", "-", "*");
         List<String> questions = new ArrayList<>();
@@ -15,8 +18,8 @@ public final class CalcGame {
 
         for (int i = 0; i <= 2; i++) {
             Random random = new Random();
-            int random1 = random.nextInt(101);
-            int random2 = random.nextInt(101);
+            int random1 = random.nextInt(BOUND);
+            int random2 = random.nextInt(BOUND);
             String randomElement = list.get(random.nextInt(list.size()));
             answers.add(calculateResult(randomElement, random1, random2));
             questions.add(random1 + " " + randomElement + " " + random2);
