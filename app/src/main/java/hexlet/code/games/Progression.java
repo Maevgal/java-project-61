@@ -2,35 +2,29 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class Progression {
-
     public static final int LENGTH = 10;
 
     public static void play() {
-
-        System.out.println("What number is missing in the progression?");
+        String descriptionGame = "What number is missing in the progression?";
+        List<String> questions = new ArrayList<>();
+        List<String> answers = new ArrayList<>();
         for (int i = 0; i <= 2; i++) {
-            int start = Engine.getRandomInt();
-            int dif = Engine.getRandomInt();
+            Random random = new Random();
+            int start = random.nextInt(101);
+            int dif = random.nextInt(101);
             int length = LENGTH;
-            int randomIndex = Engine.getRandomInt(length - 1);
+            int randomIndex = random.nextInt(length - 1);
             String[] prog = createProgession(start, dif, length);
-            int result = Integer.parseInt(prog[randomIndex]);
+            answers.add(prog[randomIndex]);
             prog[randomIndex] = "..";
-
-            Engine.askQuestion(outputProgression(prog));
-
-            int answer = Engine.getAnswerInt();
-
-            if (Engine.checkAnswer(answer, result)) {
-                break;
-            }
-
-            if (i == 2) {
-                Engine.congratulation();
-            }
+            questions.add(outputProgression(prog));
         }
+        Engine.play(descriptionGame, questions, answers);
     }
 
     private static String[] createProgession(int start, int dif, int length) {

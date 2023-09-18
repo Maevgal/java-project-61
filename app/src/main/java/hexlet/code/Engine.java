@@ -1,4 +1,6 @@
 package hexlet.code;
+
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -15,43 +17,30 @@ public class Engine {
         return userName;
     }
 
-    public static int getRandomInt() {
-        return random.nextInt(BOUND);
-    }
+    public static void play(String desriptionGame, List<String> questions, List<String> answers) {
+        greeting();
+        System.out.println(desriptionGame);
+        for (int i = 0; i < questions.size(); i++) {
+            askQuestion(questions.get(i));
+            String userAnswer = getUserAnswerString();
+            if (isNotCorrectAnswer(userAnswer, answers.get(i))) {
+                return;
+            }
+        }
+        congratulation();
 
-    public static int getRandomInt(int a) {
-        return random.nextInt(a);
     }
 
     public static void askQuestion(String question) {
         System.out.println("Question: " + question);
     }
 
-    public static int getAnswerInt() {
-        System.out.print("Your answer: ");
-        return scanner.nextInt();
-    }
-
-    public static String getAnswerString() {
+    public static String getUserAnswerString() {
         System.out.print("Your answer: ");
         return scanner.next();
     }
 
-    public static boolean checkAnswer(int answer, int result) {
-        if (answer == result) {
-            System.out.println("Correct!");
-        } else {
-            System.out.println("'" + answer + "'"
-                    + " is wrong answer ;(. Correct answer was '"
-                    + result + "'");
-            System.out.println("Let's try again, " + userName + "!");
-
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean checkAnswer(String answer, String result) {
+    public static boolean isNotCorrectAnswer(String answer, String result) {
         if (answer.equals(result)) {
             System.out.println("Correct!");
         } else {

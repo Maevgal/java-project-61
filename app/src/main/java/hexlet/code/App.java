@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class App {
 
+    public static final int EXIT = 0;
     public static final int GREET = 1;
     public static final int EVEN = 2;
     public static final int CALC = 3;
@@ -31,32 +32,14 @@ public class App {
         System.out.print("Your choice: ");
         int choice = Integer.parseInt(scanner.next());
         switch (choice) {
-            case GREET -> {
-                System.out.println("Welcome to the Brain Games!");
-                Cli.greeting();
-            }
-            case EVEN -> {
-                Engine.greeting();
-                EvenGame.play();
-            }
-            case CALC -> {
-                Engine.greeting();
-                CalcGame.play();
-            }
-            case GCD -> {
-                Engine.greeting();
-                GcdGame.play();
-            }
-            case PROGRESSION -> {
-                Engine.greeting();
-                Progression.play();
-            }
-            case PRIME -> {
-                Engine.greeting();
-                PrimeGame.play();
-            }
-            default -> System.out.println("There is no such game. Goodbay!");
-
+            case GREET -> Cli.greeting();
+            case EVEN -> EvenGame.play();
+            case CALC -> CalcGame.play();
+            case GCD -> GcdGame.play();
+            case PROGRESSION -> Progression.play();
+            case PRIME -> PrimeGame.play();
+            case EXIT -> System.out.println("Goodbye!");
+            default -> System.out.println("There is no such game. Goodbye!");
         }
         scanner.close();
     }
