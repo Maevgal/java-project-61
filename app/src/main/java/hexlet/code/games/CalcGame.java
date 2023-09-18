@@ -1,7 +1,5 @@
 package hexlet.code.games;
-
 import hexlet.code.Engine;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,7 +8,6 @@ public final class CalcGame {
 
     public static void play() {
         List<String> list = Arrays.asList("+", "-", "*");
-
 
         System.out.println("What is the result of the expression?");
 

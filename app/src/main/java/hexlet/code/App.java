@@ -30,30 +30,32 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Your choice: ");
         int choice = Integer.parseInt(scanner.next());
-
-        if (choice == GREET) {
-            System.out.println("Welcome to the Brain Games!");
-            Cli.familiarity();
-        } else if (choice == EVEN) {
-            Engine.greeting();
-            EvenGame.play();
-        } else if (choice == CALC) {
-            Engine.greeting();
-            CalcGame.play();
-        } else if (choice == GCD) {
-            Engine.greeting();
-            GcdGame.play();
-        } else if (choice == PROGRESSION) {
-            Engine.greeting();
-            Progression.play();
-        } else if (choice == PRIME) {
-            Engine.greeting();
-            PrimeGame.play();
+        switch (choice) {
+            case GREET -> {
+                System.out.println("Welcome to the Brain Games!");
+                Cli.greeting();
+            }
+            case EVEN -> {
+                Engine.greeting();
+                EvenGame.play();
+            }
+            case CALC -> {
+                Engine.greeting();
+                CalcGame.play();
+            }
+            case GCD -> {
+                Engine.greeting();
+                GcdGame.play();
+            }
+            case PROGRESSION -> {
+                Engine.greeting();
+                Progression.play();
+            }
+            case PRIME -> {
+                Engine.greeting();
+                PrimeGame.play();
+            }
         }
-
-
         scanner.close();
-
-
     }
 }
