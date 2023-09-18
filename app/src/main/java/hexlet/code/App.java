@@ -55,6 +55,8 @@ public class App {
                 Engine.greeting();
                 PrimeGame.play();
             }
+            default -> System.out.println("There is no such game. Goodbay!");
+
         }
         scanner.close();
     }
