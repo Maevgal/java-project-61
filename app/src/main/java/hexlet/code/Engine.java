@@ -1,12 +1,9 @@
 package hexlet.code;
 
-import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Engine {
     private static String userName;
-    private static Random random = new Random();
     private static Scanner scanner = new Scanner(System.in);
 
     public static String greeting() {
@@ -16,41 +13,22 @@ public class Engine {
         return userName;
     }
 
-    public static void play(String desriptionGame, List<String> questions, List<String> answers) {
+    public static void play(String desriptionGame, String[][] questionsAnswers) {
         greeting();
         System.out.println(desriptionGame);
-        for (int i = 0; i < questions.size(); i++) {
-            askQuestion(questions.get(i));
-            String userAnswer = getUserAnswerString();
-            if (isNotCorrectAnswer(userAnswer, answers.get(i))) {
+        for (int i = 0; i < questionsAnswers.length; i++) {
+            System.out.println("Question: " + questionsAnswers[i][0]);
+            System.out.print("Your answer: ");
+            String userAnswer = scanner.next();
+            if (userAnswer.equals(questionsAnswers[i][1])) {
+                System.out.println("Correct!");
+            } else {
+                System.out.println("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was '" + questionsAnswers[i][1] + "'");
+                System.out.println("Let's try again, " + userName + "!");
                 return;
             }
         }
         congratulation();
-
-    }
-
-    public static void askQuestion(String question) {
-        System.out.println("Question: " + question);
-    }
-
-    public static String getUserAnswerString() {
-        System.out.print("Your answer: ");
-        return scanner.next();
-    }
-
-    public static boolean isNotCorrectAnswer(String answer, String result) {
-        if (answer.equals(result)) {
-            System.out.println("Correct!");
-        } else {
-            System.out.println("'" + answer + "'"
-                    + " is wrong answer ;(. Correct answer was '"
-                    + result + "'");
-            System.out.println("Let's try again, " + userName + "!");
-
-            return true;
-        }
-        return false;
     }
 
     public static void congratulation() {

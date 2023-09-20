@@ -1,49 +1,40 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import hexlet.code.Utils;
 
 public class Progression {
-    public static final int LENGTH = 10;
-    public static final int BOUND = 101;
+    private static final int LENGTH = 10;
+    private static final int BOUND = 101;
+    private static final String DESCRIPTION_GAME = "What number is missing in the progression?";
 
     public static void play() {
-        String descriptionGame = "What number is missing in the progression?";
-        List<String> questions = new ArrayList<>();
-        List<String> answers = new ArrayList<>();
+        String[][] questionsAnswers = new String[3][2];
         for (int i = 0; i <= 2; i++) {
-            Random random = new Random();
-            int start = random.nextInt(BOUND);
-            int dif = random.nextInt(BOUND);
+            int start = Utils.RANDOM.nextInt(BOUND);
+            int dif = Utils.RANDOM.nextInt(BOUND);
             int length = LENGTH;
-            int randomIndex = random.nextInt(length - 1);
-            String[] prog = createProgession(start, dif, length);
-            answers.add(prog[randomIndex]);
-            prog[randomIndex] = "..";
-            questions.add(outputProgression(prog));
+            int randomIndex = Utils.RANDOM.nextInt(length - 1);
+            int[] prog = createProgession(start, dif, length);
+            questionsAnswers[i][1] = String.valueOf(prog[randomIndex]);
+            StringBuilder str = new StringBuilder();
+            for (int j = 0; j < prog.length; j++) {
+                if (j == randomIndex) {
+                    str.append(".. ");
+                } else {
+                    str.append(prog[j] + " ");
+                }
+            }
+            questionsAnswers[i][0] = String.valueOf(str);
         }
-        Engine.play(descriptionGame, questions, answers);
+        Engine.play(DESCRIPTION_GAME, questionsAnswers);
     }
 
-    private static String[] createProgession(int start, int dif, int length) {
-        String[] progression = new String[length];
-        //формирование прогрессии
+    private static int[] createProgession(int start, int dif, int length) {
+        int[] progression = new int[length];
         for (int i = 0; i < progression.length; i++) {
-            progression[i] = String.valueOf(start + i * dif);
+            progression[i] = start + i * dif;
         }
         return progression;
     }
-
-    private static String outputProgression(String[] progression) {
-        StringBuilder str = new StringBuilder();
-        for (int i = 0; i < progression.length; i++) {
-            str.append(progression[i] + " ");
-        }
-        return String.valueOf(str);
-    }
-
-
 }

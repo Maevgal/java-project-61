@@ -1,35 +1,28 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import hexlet.code.Utils;
 
 public class GcdGame {
-
-    public static final int BOUND = 101;
+    private static final int BOUND = 101;
+    private static final String DESCRIPTION_GAME = "Find the greatest common divisor of given numbers.";
 
     public static void play() {
-        String descriptionGame = "Find the greatest common divisor of given numbers.";
-        List<String> questions = new ArrayList<>();
-        List<String> answers = new ArrayList<>();
+        String[][] questionsAnswers = new String[3][2];
         for (int i = 0; i <= 2; i++) {
-            Random random = new Random();
-            int random1 = random.nextInt(BOUND);
-            int random2 = random.nextInt(BOUND);
+            int random1 = Utils.RANDOM.nextInt(BOUND);
+            int random2 = Utils.RANDOM.nextInt(BOUND);
             int result = calculateGsd(random1, random2);
-            answers.add(String.valueOf(result));
-            questions.add(random1 + " " + random2);
+            questionsAnswers[i][1] = String.valueOf(result);
+            questionsAnswers[i][0] = random1 + " " + random2;
         }
-        Engine.play(descriptionGame, questions, answers);
+        Engine.play(DESCRIPTION_GAME, questionsAnswers);
     }
 
     public static int calculateGsd(int a, int b) {
         int c = 0;
         int max = a >= b ? a : b;
         int min = a <= b ? a : b;
-
         while (true) {
             if (min == 0) {
                 return max;
@@ -41,9 +34,6 @@ public class GcdGame {
                 max = min;
                 min = c;
             }
-
         }
-
     }
-
 }

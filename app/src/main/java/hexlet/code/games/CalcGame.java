@@ -1,41 +1,34 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public final class CalcGame {
 
-    public static final int BOUND = 101;
+    private static final int BOUND = 101;
+    private static final List<String> OPERATORS = List.of("+", "-", "*");
+    private static final String DESCRIPTION_GAME = "What is the result of the expression?";
 
     public static void play() {
-        List<String> list = List.of("+", "-", "*");
-        List<String> questions = new ArrayList<>();
-        List<String> answers = new ArrayList<>();
-        String desriptionGame = "What is the result of the expression?";
-
+        String[][] questionsAnswers = new String[3][2];
         for (int i = 0; i <= 2; i++) {
-            Random random = new Random();
-            int random1 = random.nextInt(BOUND);
-            int random2 = random.nextInt(BOUND);
-            String randomElement = list.get(random.nextInt(list.size()));
-            answers.add(calculateResult(randomElement, random1, random2));
-            questions.add(random1 + " " + randomElement + " " + random2);
+            int random1 = Utils.RANDOM.nextInt(BOUND);
+            int random2 = Utils.RANDOM.nextInt(BOUND);
+            String randomElement = OPERATORS.get(Utils.RANDOM.nextInt(OPERATORS.size()));
+            questionsAnswers[i][0] = random1 + " " + randomElement + " " + random2;
+            questionsAnswers[i][1] = String.valueOf(calculateResult(randomElement, random1, random2));
         }
-        Engine.play(desriptionGame, questions, answers);
+        Engine.play(DESCRIPTION_GAME, questionsAnswers);
     }
 
-    private static String calculateResult(String randomElement, int random1, int random2) {
-        int result = 0;
-        if (randomElement.equals("+")) {
-            result = random1 + random2;
-        } else if (randomElement.equals("-")) {
-            result = random1 - random2;
-        } else if (randomElement.equals("*")) {
-            result = random1 * random2;
-        }
-        return String.valueOf(result);
+    private static int calculateResult(String randomElement, int random1, int random2) {
+        return switch (randomElement) {
+            case "+" -> random1 + random2;
+            case "-" -> random1 - random2;
+            case "*" -> random1 * random2;
+            default -> throw new RuntimeException("Operation " + randomElement + " not supported.");
+        };
     }
 }

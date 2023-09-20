@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class App {
-
     public static final int EXIT = 0;
     public static final int GREET = 1;
     public static final int EVEN = 2;
