@@ -30,10 +30,6 @@ public class Engine {
                 return;
             }
         }
-        congratulation();
-    }
-
-    public static void congratulation() {
         System.out.println("Congratulations, " + userName + "!");
     }
 }
