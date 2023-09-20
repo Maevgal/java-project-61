@@ -7,9 +7,10 @@ public class Progression {
     private static final int LENGTH = 10;
     private static final int BOUND = 101;
     private static final String DESCRIPTION_GAME = "What number is missing in the progression?";
-
+    private static final int QUESTION_ANSWERS_COUNT = 3;
+    private static final int QUESTION_ANSWERS_COLUMN = 2;
     public static void play() {
-        String[][] questionsAnswers = new String[3][2];
+        String[][] questionsAnswers = new String[QUESTION_ANSWERS_COUNT][QUESTION_ANSWERS_COLUMN];
         for (int i = 0; i <= 2; i++) {
             int start = Utils.RANDOM.nextInt(BOUND);
             int dif = Utils.RANDOM.nextInt(BOUND);
