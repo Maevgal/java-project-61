@@ -3,17 +3,16 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
+
 public class Progression {
     private static final int LENGTH = 10;
-    private static final int BOUND = 101;
     private static final String DESCRIPTION_GAME = "What number is missing in the progression?";
-    private static final int QUESTION_ANSWERS_COUNT = 3;
-    private static final int QUESTION_ANSWERS_COLUMN = 2;
+
     public static void play() {
-        String[][] questionsAnswers = new String[QUESTION_ANSWERS_COUNT][QUESTION_ANSWERS_COLUMN];
+        String[][] questionsAnswers = new String[Engine.QUESTION_ANSWERS_COUNT][Engine.QUESTION_ANSWERS_COLUMN];
         for (int i = 0; i <= 2; i++) {
-            int start = Utils.RANDOM.nextInt(BOUND);
-            int dif = Utils.RANDOM.nextInt(BOUND);
+            int start = Utils.getRandomNumber(Utils.START_RANGE, Utils.END_RANGE);
+            int dif = Utils.getRandomNumber(Utils.START_RANGE, Utils.END_RANGE);
             int length = LENGTH;
             int randomIndex = Utils.RANDOM.nextInt(length - 1);
             int[] prog = createProgession(start, dif, length);
